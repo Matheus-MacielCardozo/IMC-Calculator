@@ -14,6 +14,8 @@ function calcIMC() {
 
         localStorage.setItem('lastIMC', calc)
         document.getElementById('result').value = calc
+        const classificCheck = checkResult(calc)
+        document.getElementById('textResult').textContent = ` ${classificCheck}`
     }
 }
 
@@ -23,5 +25,21 @@ function showResults() {
         document.getElementById('result').value = lastResultIMC
     } else {
         document.getElementById('result').value = '0'
+    }
+}
+
+function checkResult(checkIMC) {
+    if (checkIMC <= 18.5) {
+        return "e está abaixo do peso ideal"
+    } else if (checkIMC > 18.5 && checkIMC <= 24.9) {
+        return "e está no intervalo de peso ideal"
+    } else if (checkIMC >= 25 && checkIMC < 29.9) {
+        return "e está em sobrepeso";
+    } else if (checkIMC >= 30 && checkIMC < 34.9) {
+        return "e está em obesidade grau 1";
+    } else if (checkIMC >= 35 && checkIMC < 39.9) {
+        return "e está em besidade grau 2";
+    } else {
+        return "e está em obesidade grau 3";
     }
 }
